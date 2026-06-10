@@ -5,8 +5,8 @@
 // Supabase Dashboard > Settings > API
 // ============================================
 
-const SUPABASE_URL = 'YOUR_SUPABASE_URL';       // contoh: https://xxxxx.supabase.co
-const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY'; // contoh: eyJhbGciOiJIUzI1...
+const SUPABASE_URL = 'https://lcfogykaazmqtnyiumvp.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxjZm9neWthYXptcXRueWl1bXZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwOTI5OTksImV4cCI6MjA5NjY2ODk5OX0.lLlm_t7Gv-9HtCqK9DpKHxv_ZvbWlbSB1IyJH7DipNQ';
 
 // Initialize Supabase client
 const { createClient } = supabase;
