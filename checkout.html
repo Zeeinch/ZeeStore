@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Checkout — selesaikan pesanan kamu di ZeeStore.">
+  <title>Checkout — ZeeStore</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-zee navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="home.html">
+        <i class="bi bi-bag-heart-fill"></i> ZeeStore
+      </a>
+      <div class="d-flex align-items-center gap-1">
+        <a href="cart.html" class="nav-icon" title="Keranjang">
+          <i class="bi bi-cart3"></i>
+          <span class="badge" id="cartBadge" style="display:none;">0</span>
+        </a>
+        <div class="dropdown user-dropdown">
+          <button class="nav-icon dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            <i class="bi bi-person-circle"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li class="px-3 py-2 border-bottom">
+              <small class="text-muted">Halo,</small><br>
+              <strong id="navUserName">Guest</strong>
+            </li>
+            <div id="userMenuAuth" style="display:none;">
+              <li><a class="dropdown-item" href="sell.html"><i class="bi bi-shop"></i> Jual Barang</a></li>
+              <li><a class="dropdown-item" href="cart.html"><i class="bi bi-cart3"></i> Keranjang</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" href="#" onclick="signOut()"><i class="bi bi-box-arrow-right"></i> Keluar</a></li>
+            </div>
+            <div id="userMenuGuest">
+              <li><a class="dropdown-item" href="index.html"><i class="bi bi-box-arrow-in-right"></i> Masuk / Daftar</a></li>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CHECKOUT CONTENT -->
+  <main class="container my-4">
+    <h2 class="fw-bold mb-3">
+      <i class="bi bi-shield-check text-gradient"></i> Checkout
+    </h2>
+
+    <!-- Step Indicators -->
+    <div class="checkout-steps mb-4">
+      <div class="checkout-step active">
+        <span class="step-num">1</span>
+        <span>Pengiriman</span>
+      </div>
+      <div class="step-connector"></div>
+      <div class="checkout-step">
+        <span class="step-num">2</span>
+        <span>Pembayaran</span>
+      </div>
+      <div class="step-connector"></div>
+      <div class="checkout-step">
+        <span class="step-num">3</span>
+        <span>Konfirmasi</span>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <!-- Left: Steps -->
+      <div class="col-lg-8">
+
+        <!-- STEP 1: Shipping -->
+        <div class="step-panel" id="step1" style="display:block;">
+          <div class="sell-form-card fade-in-up">
+            <h5 class="fw-bold mb-3"><i class="bi bi-truck me-2 text-gradient"></i>Alamat Pengiriman</h5>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="shippingName" class="form-label fw-semibold">Nama Penerima <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="shippingName" placeholder="Nama lengkap penerima" required>
+              </div>
+              <div class="col-md-6">
+                <label for="shippingPhone" class="form-label fw-semibold">No. Telepon <span class="text-danger">*</span></label>
+                <input type="tel" class="form-control" id="shippingPhone" placeholder="08xxxxxxxxxx" required>
+              </div>
+              <div class="col-12">
+                <label for="shippingAddress" class="form-label fw-semibold">Alamat Lengkap <span class="text-danger">*</span></label>
+                <textarea class="form-control" id="shippingAddress" rows="3" placeholder="Jl. Contoh No.123, RT 01/RW 02, Kel. ABC, Kec. XYZ" required></textarea>
+              </div>
+              <div class="col-md-6">
+                <label for="shippingCity" class="form-label fw-semibold">Kota <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="shippingCity" placeholder="Jakarta" required>
+              </div>
+              <div class="col-md-6">
+                <label for="shippingPostal" class="form-label fw-semibold">Kode Pos</label>
+                <input type="text" class="form-control" id="shippingPostal" placeholder="12345">
+              </div>
+              <div class="col-12 text-end">
+                <button class="btn btn-zee" onclick="goToStep(2)">
+                  Lanjut ke Pembayaran <i class="bi bi-arrow-right ms-1"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: Payment -->
+        <div class="step-panel" id="step2" style="display:none;">
+          <div class="sell-form-card fade-in-up">
+            <h5 class="fw-bold mb-3"><i class="bi bi-credit-card me-2 text-gradient"></i>Metode Pembayaran</h5>
+
+            <h6 class="fw-semibold text-muted mb-2">Transfer Bank</h6>
+            <div class="d-flex flex-column gap-2 mb-3">
+              <label class="payment-method d-flex align-items-center gap-3">
+                <input type="radio" name="paymentMethod" value="bca">
+                <div>
+                  <div class="fw-semibold">Bank BCA</div>
+                  <small class="text-muted">Transfer via ATM, Mobile Banking, atau Internet Banking</small>
+                </div>
+              </label>
+              <label class="payment-method d-flex align-items-center gap-3">
+                <input type="radio" name="paymentMethod" value="mandiri">
+                <div>
+                  <div class="fw-semibold">Bank Mandiri</div>
+                  <small class="text-muted">Transfer via ATM, Livin, atau Internet Banking</small>
+                </div>
+              </label>
+            </div>
+
+            <h6 class="fw-semibold text-muted mb-2">E-Wallet</h6>
+            <div class="d-flex flex-column gap-2 mb-3">
+              <label class="payment-method d-flex align-items-center gap-3">
+                <input type="radio" name="paymentMethod" value="gopay">
+                <div>
+                  <div class="fw-semibold">GoPay</div>
+                  <small class="text-muted">Bayar langsung dari saldo GoPay</small>
+                </div>
+              </label>
+              <label class="payment-method d-flex align-items-center gap-3">
+                <input type="radio" name="paymentMethod" value="ovo">
+                <div>
+                  <div class="fw-semibold">OVO</div>
+                  <small class="text-muted">Bayar langsung dari saldo OVO</small>
+                </div>
+              </label>
+              <label class="payment-method d-flex align-items-center gap-3">
+                <input type="radio" name="paymentMethod" value="dana">
+                <div>
+                  <div class="fw-semibold">DANA</div>
+                  <small class="text-muted">Bayar langsung dari saldo DANA</small>
+                </div>
+              </label>
+            </div>
+
+            <h6 class="fw-semibold text-muted mb-2">Lainnya</h6>
+            <div class="d-flex flex-column gap-2 mb-4">
+              <label class="payment-method d-flex align-items-center gap-3">
+                <input type="radio" name="paymentMethod" value="cod">
+                <div>
+                  <div class="fw-semibold">Bayar di Tempat (COD)</div>
+                  <small class="text-muted">Bayar tunai saat barang sampai</small>
+                </div>
+              </label>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <button class="btn btn-zee-outline" onclick="goToStep(1)">
+                <i class="bi bi-arrow-left me-1"></i> Kembali
+              </button>
+              <button class="btn btn-zee" onclick="goToStep(3)">
+                Konfirmasi Pesanan <i class="bi bi-arrow-right ms-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: Confirmation -->
+        <div class="step-panel" id="step3" style="display:none;">
+          <div class="sell-form-card fade-in-up">
+            <h5 class="fw-bold mb-3"><i class="bi bi-clipboard-check me-2 text-gradient"></i>Konfirmasi Pesanan</h5>
+
+            <div class="mb-3 p-3 rounded" style="background:var(--bg-body);">
+              <h6 class="fw-semibold mb-2"><i class="bi bi-truck me-1"></i> Alamat Pengiriman</h6>
+              <div id="confirmShipping">
+                <!-- Filled by JS -->
+              </div>
+            </div>
+
+            <div class="mb-3 p-3 rounded" style="background:var(--bg-body);">
+              <h6 class="fw-semibold mb-2"><i class="bi bi-credit-card me-1"></i> Metode Pembayaran</h6>
+              <div id="confirmPayment">
+                <!-- Filled by JS -->
+              </div>
+            </div>
+
+            <div class="alert alert-warning py-2" style="font-size:0.85rem;">
+              <i class="bi bi-info-circle me-1"></i> Pastikan semua data sudah benar sebelum memproses pembayaran.
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <button class="btn btn-zee-outline" onclick="goToStep(2)">
+                <i class="bi bi-arrow-left me-1"></i> Kembali
+              </button>
+              <button class="btn btn-zee btn-lg" onclick="processOrder()" id="btnPay">
+                <span class="spinner-border spinner-border-sm d-none me-2" id="paySpinner"></span>
+                <i class="bi bi-lock me-1"></i> Bayar Sekarang
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4: Success -->
+        <div class="step-panel" id="step4" style="display:none;">
+          <div class="sell-form-card">
+            <div class="order-success">
+              <div class="success-icon">
+                <i class="bi bi-check-lg"></i>
+              </div>
+              <h3 class="fw-bold mb-2">Pesanan Berhasil! 🎉</h3>
+              <p class="text-muted mb-4">Terima kasih sudah berbelanja di ZeeStore.</p>
+
+              <div class="text-start p-3 rounded mx-auto" style="background:var(--bg-body);max-width:400px;">
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-muted">No. Pesanan</span>
+                  <strong id="orderId">-</strong>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-muted">Total Pembayaran</span>
+                  <strong id="orderTotal" style="color:var(--primary);">-</strong>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <span class="text-muted">Tanggal</span>
+                  <strong id="orderDate" style="font-size:0.85rem;">-</strong>
+                </div>
+              </div>
+
+              <div class="mt-4 d-flex gap-2 justify-content-center flex-wrap">
+                <a href="home.html" class="btn btn-zee">
+                  <i class="bi bi-bag-check me-1"></i> Lanjut Belanja
+                </a>
+                <a href="home.html" class="btn btn-zee-outline">
+                  <i class="bi bi-house me-1"></i> Ke Beranda
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right: Order Summary -->
+      <div class="col-lg-4" id="orderSummarySidebar">
+        <div class="cart-summary">
+          <h5 class="fw-bold mb-3">
+            <i class="bi bi-receipt me-1"></i> Ringkasan Pesanan
+          </h5>
+          <div id="orderItems" style="max-height:300px;overflow-y:auto;">
+            <!-- Loaded by JS -->
+          </div>
+          <hr>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="checkoutSubtotal">Rp 0</span>
+          </div>
+          <div class="summary-row">
+            <span>Ongkos Kirim</span>
+            <span id="checkoutShipping">Rp 15.000</span>
+          </div>
+          <div class="summary-row summary-total">
+            <span>Total</span>
+            <span class="total-price" id="checkoutTotal">Rp 0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer-zee">
+    <div class="container">
+      <div class="footer-bottom">
+        &copy; 2026 ZeeStore. All rights reserved. | <a href="home.html">Beranda</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="toast-container-zee"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>
