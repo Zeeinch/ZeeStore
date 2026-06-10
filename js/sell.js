@@ -28,7 +28,12 @@ function previewImage() {
   const preview = document.getElementById('imagePreview');
 
   if (url) {
-    preview.innerHTML = `<img src="${url}" alt="Preview" onerror="this.parentElement.innerHTML='<i class=\\'bi bi-exclamation-triangle fs-1\\'></i><p>Gambar tidak dapat dimuat</p>'">`;
+    const safeUrl = sanitizeURL(url);
+    if (safeUrl) {
+      preview.innerHTML = `<img src="${safeUrl}" alt="Preview" onerror="this.parentElement.innerHTML='<i class=\\'bi bi-exclamation-triangle fs-1\\'></i><p>Gambar tidak dapat dimuat</p>'">`;
+    } else {
+      preview.innerHTML = `<div class="alert alert-danger mb-0">URL gambar tidak valid.</div>`;
+    }
   } else {
     preview.innerHTML = `
       <i class="bi bi-image fs-1"></i>

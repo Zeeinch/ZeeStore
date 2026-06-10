@@ -26,7 +26,7 @@ async function loadProducts(categoryId = null, searchQuery = '') {
   const { data, error } = await query;
 
   if (error) {
-    container.innerHTML = `<div class="col-12"><div class="alert alert-danger">Gagal memuat produk: ${error.message}</div></div>`;
+    container.innerHTML = `<div class="col-12"><div class="alert alert-danger">Gagal memuat produk: ${escapeHTML(error.message)}</div></div>`;
     return;
   }
 
@@ -50,26 +50,30 @@ function renderProducts(products) {
     return;
   }
 
-  container.innerHTML = products.map((p, i) => `
+  container.innerHTML = products.map((p, i) => {
+    const safeImg = sanitizeURL(p.image_url) || 'https://via.placeholder.com/400x400?text=No+Image';
+    const safeName = escapeHTML(p.name);
+    const safeCity = escapeHTML(p.city || 'Indonesia');
+    return `
     <div class="col-6 col-md-4 col-lg-3 col-xl-2 mb-3 fade-in-up delay-${(i % 4) + 1}">
       <div class="product-card" onclick="window.location.href='product.html?id=${p.id}'">
         <div class="card-img-wrapper">
-          <img src="${p.image_url || 'https://via.placeholder.com/400x400?text=No+Image'}" alt="${p.name}" loading="lazy">
+          <img src="${safeImg}" alt="${safeName}" loading="lazy">
         </div>
         <div class="card-body">
-          <div class="product-name">${p.name}</div>
+          <div class="product-name">${safeName}</div>
           <div class="product-price">${formatRupiah(p.price)}</div>
           <div class="product-meta">
             <span class="rating"><i class="bi bi-star-fill"></i> ${p.rating || '0'}</span>
             <span class="sold">${p.sold || 0} terjual</span>
           </div>
           <div class="product-location">
-            <i class="bi bi-geo-alt"></i> ${p.city || 'Indonesia'}
+            <i class="bi bi-geo-alt"></i> ${safeCity}
           </div>
         </div>
       </div>
     </div>
-  `).join('');
+  `}).join('');
 }
 
 // Load categories
@@ -93,8 +97,8 @@ async function loadCategories() {
 
   html += data.map(c => `
     <div class="category-item" onclick="filterCategory('${c.id}', this)">
-      <i class="bi ${c.icon}"></i>
-      <span>${c.name}</span>
+      <i class="bi ${escapeHTML(c.icon)}"></i>
+      <span>${escapeHTML(c.name)}</span>
     </div>
   `).join('');
 

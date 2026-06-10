@@ -40,23 +40,28 @@ async function loadProductDetail() {
 // Render product detail
 function renderProductDetail(p) {
   const container = document.getElementById('productDetailContainer');
-  const sellerName = p.profiles?.full_name || 'ZeeStore Official';
+  const sellerName = escapeHTML(p.profiles?.full_name || 'ZeeStore Official');
+  const safeImg = sanitizeURL(p.image_url) || 'https://via.placeholder.com/600x600?text=No+Image';
+  const safeName = escapeHTML(p.name);
+  const safeDesc = escapeHTML(p.description || 'Tidak ada deskripsi.');
+  const safeCat = escapeHTML(p.categories?.name || 'Umum');
+  const safeCity = escapeHTML(p.city || 'Indonesia');
 
   container.innerHTML = `
     <div class="row g-4 fade-in-up">
       <!-- Product Image -->
       <div class="col-md-5">
         <div class="product-detail-img">
-          <img src="${p.image_url || 'https://via.placeholder.com/600x600?text=No+Image'}" 
-               alt="${p.name}" class="img-fluid">
+          <img src="${safeImg}" 
+               alt="${safeName}" class="img-fluid">
         </div>
       </div>
 
       <!-- Product Info -->
       <div class="col-md-7">
         <div class="product-detail-info">
-          <span class="badge-zee mb-2 d-inline-block">${p.categories?.name || 'Umum'}</span>
-          <h1 class="title mb-2">${p.name}</h1>
+          <span class="badge-zee mb-2 d-inline-block">${safeCat}</span>
+          <h1 class="title mb-2">${safeName}</h1>
           
           <div class="meta-row mb-3">
             <span><i class="bi bi-star-fill"></i> ${p.rating || 0}</span>
@@ -70,14 +75,14 @@ function renderProductDetail(p) {
 
           <div class="mb-3">
             <h6 class="fw-bold mb-2">Deskripsi Produk</h6>
-            <p class="text-secondary" style="line-height:1.8;">${p.description || 'Tidak ada deskripsi.'}</p>
+            <p class="text-secondary" style="line-height:1.8;">${safeDesc}</p>
           </div>
 
           <div class="mb-3">
             <div class="seller-badge">
               <i class="bi bi-shop"></i>
               <span>${sellerName}</span>
-              <span class="text-muted">• <i class="bi bi-geo-alt"></i> ${p.city || 'Indonesia'}</span>
+              <span class="text-muted">• <i class="bi bi-geo-alt"></i> ${safeCity}</span>
             </div>
           </div>
 
@@ -160,7 +165,7 @@ async function addToCart() {
     showToast('Produk berhasil ditambahkan ke keranjang!', 'success');
     await updateCartBadge();
   } catch (err) {
-    showToast('Gagal menambahkan ke keranjang: ' + err.message, 'error');
+    showToast('Gagal menambahkan ke keranjang: ' + escapeHTML(err.message), 'error');
   } finally {
     btn.disabled = false;
     btn.innerHTML = '<i class="bi bi-cart-plus me-1"></i> Tambah ke Keranjang';
@@ -190,14 +195,17 @@ async function loadRelatedProducts(categoryId, excludeId) {
     return;
   }
 
-  container.innerHTML = data.map(p => `
+  container.innerHTML = data.map(p => {
+    const safeImg = sanitizeURL(p.image_url) || 'https://via.placeholder.com/400x400?text=No+Image';
+    const safeName = escapeHTML(p.name);
+    return `
     <div class="col-6 col-md-4 col-lg-2 mb-3">
       <div class="product-card" onclick="window.location.href='product.html?id=${p.id}'">
         <div class="card-img-wrapper">
-          <img src="${p.image_url || 'https://via.placeholder.com/400x400?text=No+Image'}" alt="${p.name}" loading="lazy">
+          <img src="${safeImg}" alt="${safeName}" loading="lazy">
         </div>
         <div class="card-body">
-          <div class="product-name">${p.name}</div>
+          <div class="product-name">${safeName}</div>
           <div class="product-price">${formatRupiah(p.price)}</div>
           <div class="product-meta">
             <span class="rating"><i class="bi bi-star-fill"></i> ${p.rating || 0}</span>
@@ -205,7 +213,7 @@ async function loadRelatedProducts(categoryId, excludeId) {
         </div>
       </div>
     </div>
-  `).join('');
+  `}).join('');
 }
 
 // Init

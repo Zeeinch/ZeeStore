@@ -44,12 +44,14 @@ function renderOrderSummary() {
   container.innerHTML = checkoutItems.map(item => {
     const p = item.products;
     if (!p) return '';
+    const safeImg = sanitizeURL(p.image_url) || 'https://via.placeholder.com/60x60?text=No';
+    const safeName = escapeHTML(p.name);
     return `
       <div class="d-flex gap-2 mb-2 pb-2 border-bottom">
-        <img src="${p.image_url || 'https://via.placeholder.com/60x60?text=No'}" 
-             alt="${p.name}" style="width:50px;height:50px;object-fit:cover;border-radius:6px;">
+        <img src="${safeImg}" 
+             alt="${safeName}" style="width:50px;height:50px;object-fit:cover;border-radius:6px;">
         <div class="flex-fill">
-          <div style="font-size:0.8rem;font-weight:500;line-height:1.3;">${truncate(p.name, 40)}</div>
+          <div style="font-size:0.8rem;font-weight:500;line-height:1.3;">${escapeHTML(truncate(p.name, 40))}</div>
           <div style="font-size:0.75rem;color:var(--text-muted);">${item.quantity}x ${formatRupiah(p.price)}</div>
         </div>
         <div style="font-size:0.85rem;font-weight:600;white-space:nowrap;">${formatRupiah(p.price * item.quantity)}</div>
@@ -150,12 +152,12 @@ function renderConfirmation() {
   };
 
   document.getElementById('confirmShipping').innerHTML = `
-    <p class="mb-1"><strong>${shippingName}</strong></p>
-    <p class="mb-1 text-muted">${shippingPhone}</p>
-    <p class="mb-0 text-muted">${shippingAddress}, ${shippingCity}</p>`;
+    <p class="mb-1"><strong>${escapeHTML(shippingName)}</strong></p>
+    <p class="mb-1 text-muted">${escapeHTML(shippingPhone)}</p>
+    <p class="mb-0 text-muted">${escapeHTML(shippingAddress)}, ${escapeHTML(shippingCity)}</p>`;
 
   document.getElementById('confirmPayment').innerHTML = `
-    <p class="mb-0"><strong>${paymentLabels[paymentMethod] || paymentMethod}</strong></p>`;
+    <p class="mb-0"><strong>${escapeHTML(paymentLabels[paymentMethod] || paymentMethod)}</strong></p>`;
 }
 
 // Process order

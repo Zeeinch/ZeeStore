@@ -19,7 +19,7 @@ async function loadCart() {
     .order('created_at', { ascending: false });
 
   if (error) {
-    container.innerHTML = `<div class="alert alert-danger">Gagal memuat keranjang: ${error.message}</div>`;
+    container.innerHTML = `<div class="alert alert-danger">Gagal memuat keranjang: ${escapeHTML(error.message)}</div>`;
     return;
   }
 
@@ -47,17 +47,21 @@ function renderCart() {
   container.innerHTML = cartItems.map(item => {
     const p = item.products;
     if (!p) return '';
+    const safeImg = sanitizeURL(p.image_url) || 'https://via.placeholder.com/100x100?text=No+Image';
+    const safeName = escapeHTML(p.name);
+    const safeCity = escapeHTML(p.city || 'Indonesia');
+
     return `
       <div class="cart-item fade-in-up" id="cart-item-${item.id}">
         <div class="d-flex gap-3">
-          <img src="${p.image_url || 'https://via.placeholder.com/100x100?text=No+Image'}" 
-               alt="${p.name}" onclick="window.location.href='product.html?id=${p.id}'" style="cursor:pointer;">
+          <img src="${safeImg}" 
+               alt="${safeName}" onclick="window.location.href='product.html?id=${p.id}'" style="cursor:pointer;">
           <div class="flex-fill">
             <h6 class="fw-semibold mb-1" style="font-size:0.95rem;">
-              <a href="product.html?id=${p.id}" class="text-decoration-none text-dark">${p.name}</a>
+              <a href="product.html?id=${p.id}" class="text-decoration-none text-dark">${safeName}</a>
             </h6>
             <div class="text-muted mb-2" style="font-size:0.8rem;">
-              <i class="bi bi-geo-alt"></i> ${p.city || 'Indonesia'}
+              <i class="bi bi-geo-alt"></i> ${safeCity}
             </div>
             <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
               <div class="fw-bold" style="color:var(--primary);font-size:1.05rem;">${formatRupiah(p.price)}</div>
