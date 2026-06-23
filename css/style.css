@@ -1070,3 +1070,27 @@ a:hover {
   text-align: center;
   margin-right: 0.5rem;
 }
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--primary-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(255, 51, 102, 0.3);
+  transition: all var(--transition-fast);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  margin: -0.2rem;
+}
+
+.user-avatar i {
+  font-size: 1.2rem;
+  margin: 0 !important;
+}
+
+.user-dropdown .nav-icon::after {
+  display: none !important;
+}
