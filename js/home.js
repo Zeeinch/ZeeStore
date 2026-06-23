@@ -26,6 +26,10 @@ async function loadProducts(categoryId = null, searchQuery = '') {
   const { data, error } = await query;
 
   if (error) {
+    if (error.message && error.message.toLowerCase().includes('jwt expired')) {
+      await signOut();
+      return;
+    }
     container.innerHTML = `<div class="col-12"><div class="alert alert-danger">Gagal memuat produk: ${escapeHTML(error.message)}</div></div>`;
     return;
   }

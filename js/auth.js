@@ -59,8 +59,13 @@ async function signIn(email, password) {
 
 // Sign out
 async function signOut() {
-  const { error } = await _supabase.auth.signOut();
-  if (error) throw error;
+  try {
+    await _supabase.auth.signOut();
+  } catch (e) {
+    console.warn('Sign out warning:', e);
+  }
+  // Clear all local storage to ensure the expired token is removed
+  localStorage.clear();
   window.location.href = 'index.html';
 }
 
