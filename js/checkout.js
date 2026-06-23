@@ -216,6 +216,20 @@ async function processOrder() {
 
     if (itemsError) throw itemsError;
 
+    // Update product stock and sold count
+    for (const item of checkoutItems) {
+      if (!item.products) continue;
+      const currentStock = item.products.stock || 0;
+      const currentSold = item.products.sold || 0;
+      const newStock = Math.max(0, currentStock - item.quantity);
+      const newSold = currentSold + item.quantity;
+      
+      await _supabase
+        .from('products')
+        .update({ stock: newStock, sold: newSold })
+        .eq('id', item.product_id);
+    }
+
     // Clear cart
     await _supabase
       .from('cart_items')

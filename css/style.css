@@ -4,49 +4,49 @@
    ============================================ */
 
 /* ---------- Google Fonts ---------- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 /* ---------- CSS Variables ---------- */
 :root {
-  --primary: #FF6B35;
-  --primary-dark: #E55A2B;
-  --primary-light: #FF8F65;
-  --primary-gradient: linear-gradient(135deg, #FF6B35, #F7931E);
-  --primary-gradient-hover: linear-gradient(135deg, #E55A2B, #E0841A);
+  --primary: #FF3366;
+  --primary-dark: #E62E5C;
+  --primary-light: #FF668C;
+  --primary-gradient: linear-gradient(135deg, #FF3366, #FF9933);
+  --primary-gradient-hover: linear-gradient(135deg, #E62E5C, #E68A2E);
 
-  --secondary: #1A1A2E;
-  --secondary-light: #16213E;
+  --secondary: #0F172A;
+  --secondary-light: #1E293B;
 
-  --accent: #0F3460;
-  --accent-light: #533483;
+  --accent: #6366F1;
+  --accent-light: #818CF8;
 
-  --success: #00C853;
-  --warning: #FFB300;
-  --danger: #FF1744;
-  --info: #00B0FF;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --info: #3B82F6;
 
-  --bg-body: #F5F5F8;
+  --bg-body: #F8FAFC;
   --bg-card: #FFFFFF;
-  --bg-navbar: #1A1A2E;
+  --bg-navbar: rgba(15, 23, 42, 0.85);
 
-  --text-primary: #1A1A2E;
-  --text-secondary: #6B7280;
-  --text-muted: #9CA3AF;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
   --text-white: #FFFFFF;
 
-  --border-color: #E5E7EB;
-  --border-radius: 12px;
-  --border-radius-lg: 16px;
-  --border-radius-xl: 20px;
+  --border-color: #E2E8F0;
+  --border-radius: 16px;
+  --border-radius-lg: 24px;
+  --border-radius-xl: 32px;
 
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
-  --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
-  --shadow-xl: 0 16px 50px rgba(0,0,0,0.15);
+  --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
+  --shadow-md: 0 10px 30px rgba(0,0,0,0.08);
+  --shadow-lg: 0 20px 40px rgba(0,0,0,0.12);
+  --shadow-xl: 0 30px 60px rgba(0,0,0,0.16);
 
-  --transition-fast: 0.2s ease;
-  --transition-normal: 0.3s ease;
-  --transition-slow: 0.5s ease;
+  --transition-fast: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ---------- Base ---------- */
@@ -57,11 +57,15 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: var(--bg-body);
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand, .product-price, .btn-zee, .btn-primary {
+  font-family: 'Outfit', sans-serif;
 }
 
 a {
@@ -92,11 +96,14 @@ a:hover {
 /* ---------- Navbar ---------- */
 .navbar-zee {
   background: var(--bg-navbar) !important;
-  padding: 0.6rem 0;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 0.8rem 0;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.05);
   position: sticky;
   top: 0;
   z-index: 1050;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .navbar-zee .navbar-brand {
@@ -288,7 +295,7 @@ a:hover {
 }
 
 .product-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-8px);
   box-shadow: var(--shadow-lg);
   border-color: var(--primary-light);
 }
@@ -385,7 +392,7 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #0F3460 100%);
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #FF3366 150%);
   position: relative;
   overflow: hidden;
 }
@@ -393,25 +400,25 @@ a:hover {
 .auth-page::before {
   content: '';
   position: absolute;
-  top: -10%;
+  top: -20%;
   left: -10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(255,107,53,0.15), transparent 70%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,51,102,0.2), transparent 70%);
   border-radius: 50%;
-  animation: floatBubble 8s ease-in-out infinite;
+  animation: floatBubble 10s ease-in-out infinite;
 }
 
 .auth-page::after {
   content: '';
   position: absolute;
-  bottom: -15%;
+  bottom: -20%;
   right: -10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(247,147,30,0.1), transparent 70%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(99,102,241,0.15), transparent 70%);
   border-radius: 50%;
-  animation: floatBubble 10s ease-in-out infinite reverse;
+  animation: floatBubble 12s ease-in-out infinite reverse;
 }
 
 @keyframes floatBubble {
