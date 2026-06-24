@@ -392,38 +392,50 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #FF3366 150%);
+  /* Animated Gradient Background */
+  background: linear-gradient(-45deg, #0F172A, #1E293B, #FF3366, #6366F1);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
   position: relative;
   overflow: hidden;
 }
 
-.auth-page::before {
-  content: '';
-  position: absolute;
-  top: -20%;
-  left: -10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(255,51,102,0.2), transparent 70%);
-  border-radius: 50%;
-  animation: floatBubble 10s ease-in-out infinite;
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
+.auth-page::before,
 .auth-page::after {
   content: '';
   position: absolute;
-  bottom: -20%;
-  right: -10%;
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, rgba(99,102,241,0.15), transparent 70%);
   border-radius: 50%;
-  animation: floatBubble 12s ease-in-out infinite reverse;
+  filter: blur(40px);
+  z-index: 0;
+}
+
+.auth-page::before {
+  top: -10%;
+  left: -10%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, rgba(255, 51, 102, 0.3), transparent 70%);
+  animation: floatBubble 8s ease-in-out infinite alternate;
+}
+
+.auth-page::after {
+  bottom: -10%;
+  right: -10%;
+  width: 70vw;
+  height: 70vw;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.25), transparent 70%);
+  animation: floatBubble 12s ease-in-out infinite alternate-reverse;
 }
 
 @keyframes floatBubble {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(30px, -30px) scale(1.05); }
+  0% { transform: translate(0, 0) scale(0.8); }
+  100% { transform: translate(50px, -50px) scale(1.2); }
 }
 
 .auth-card {
