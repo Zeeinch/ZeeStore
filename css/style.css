@@ -25,16 +25,16 @@
   --danger: #EF4444;
   --info: #3B82F6;
 
-  --bg-body: #F8FAFC;
-  --bg-card: #FFFFFF;
-  --bg-navbar: rgba(15, 23, 42, 0.85);
+  --bg-body: #0F172A;
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --bg-navbar: rgba(15, 23, 42, 0.5);
 
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-muted: #94A3B8;
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-muted: rgba(255, 255, 255, 0.5);
   --text-white: #FFFFFF;
 
-  --border-color: #E2E8F0;
+  --border-color: rgba(255, 255, 255, 0.1);
   --border-radius: 16px;
   --border-radius-lg: 24px;
   --border-radius-xl: 32px;
@@ -58,10 +58,42 @@
 
 body {
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: var(--bg-body);
+  background: linear-gradient(-45deg, #0F172A, #1E293B, #FF3366, #6366F1);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::before {
+  top: -10%;
+  left: -10%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, rgba(255, 51, 102, 0.25), transparent 70%);
+  animation: floatBubble 8s ease-in-out infinite alternate;
+}
+
+body::after {
+  bottom: -10%;
+  right: -10%;
+  width: 70vw;
+  height: 70vw;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.2), transparent 70%);
+  animation: floatBubble 12s ease-in-out infinite alternate-reverse;
 }
 
 h1, h2, h3, h4, h5, h6, .navbar-brand, .product-price, .btn-zee, .btn-primary {
