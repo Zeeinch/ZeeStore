@@ -1,0 +1,279 @@
+﻿LAPORAN TUGASPEMROGRAMAN WEB IAPLIKASI E-COMMERCE ZEESTORE - PLATFORM MARKETPLACE ONLINE UMKM TIM PENGUSUL Muh Kholaf Asmaul IkhsanNIM:8020240158Ridho AidillaNIM:8020240020Tristan Napalem SingarimbunNIM:8020240261PROGRAM STUDITEKNIK INFORMATIKAUNIVERSITAS DINAMIKA BANGSA2026LAPORAN TUGASPEMROGRAMAN WEB IAPLIKASI E-COMMERCE ZEESTORE - PLATFORM MARKETPLACE ONLINE UMKM TIM PENGUSUL Muh Kholaf Asmaul IkhsanNIM:8020240158Ridho AidillaNIM:8020240020Tristan Napalem SingarimbunNIM:8020240261PROGRAM STUDITEKNIK INFORMATIKAUNIVERSITAS DINAMIKA BANGSA2026
+LAPORAN TUGAS
+PEMROGRAMAN WEB I
+APLIKASI E-COMMERCE ZEESTORE - PLATFORM MARKETPLACE ONLINE UMKM 
+TIM PENGUSUL 
+Muh Kholaf Asmaul IkhsanNIM:8020240158
+Ridho AidillaNIM:8020240020
+Tristan Napalem SingarimbunNIM:8020240261
+PROGRAM STUDITEKNIK INFORMATIKA
+UNIVERSITAS DINAMIKA BANGSA
+2026
+LAPORAN TUGAS
+PEMROGRAMAN WEB I
+APLIKASI E-COMMERCE ZEESTORE - PLATFORM MARKETPLACE ONLINE UMKM 
+TIM PENGUSUL 
+Muh Kholaf Asmaul IkhsanNIM:8020240158
+Ridho AidillaNIM:8020240020
+Tristan Napalem SingarimbunNIM:8020240261
+PROGRAM STUDITEKNIK INFORMATIKA
+UNIVERSITAS DINAMIKA BANGSA
+2026
+Kata Pengantar
+Puji syukur kehadirat Tuhan Yang Maha Esa atas segala rahmat dan karunia-Nya, sehingga penulis dapat menyelesaikan laporan tugas yang berjudul "Website ZeeStore - Platform Marketplace Online UMKM" ini dengan baik dan tepat waktu.
+Laporan ini disusun untuk memenuhi salah satu tugas mata kuliah Pemrograman Web I. Selain itu, laporan ini juga bertujuan untuk memberikan wawasan mengenai bagaimana membangun sebuah platform e-commerce/marketplace yang fungsional menggunakan teknologi web modern seperti HTML5, CSS3, JavaScript, Bootstrap 5, dan Supabase sebagai backend.
+Dalam proses pengembangan website ini, kami menggunakan bantuan AI (Artificial Intelligence) untuk mempercepat proses coding dan melakukan modifikasi kreatif pada tampilan. Seluruh prompt AI yang digunakan telah dicantumkan dalam laporan ini sesuai ketentuan tugas.
+Penulis menyadari bahwa laporan ini masih jauh dari kesempurnaan. Oleh karena itu, kritik dan saran yang membangun sangat penulis harapkan demi perbaikan di masa mendatang. Akhir kata, semoga laporan ini dapat bermanfaat bagi pembaca.
+Jambi, 24 Juni 2026
+Penulis
+Daftar Isi
+Halaman Judul
+Kata Pengantar
+Daftar Isi
+Bab I Pendahuluan
+    1.1 Latar Belakang
+    1.2 Rumusan Masalah
+    1.3 Manfaat dan Tujuan
+Bab II Pembahasan
+    2.1 Deskripsi Website
+    2.2 Link Website Online
+    2.3 Daftar Halaman Website
+    2.4 Teknologi yang Digunakan
+    2.5 Desain Sistem (Design System)
+    2.6 Modifikasi yang Dilakukan
+    2.7 Prompt AI yang Digunakan
+    2.8 Struktur File Project
+Bab III Penutup
+    3.1 Kesimpulan
+    3.2 Saran
+Daftar Pustaka
+Lampiran
+Bab I Pendahuluan
+1.1 Latar Belakang
+Di era digital saat ini, e-commerce atau perdagangan elektronik telah menjadi salah satu pilar utama perekonomian modern. Pertumbuhan pengguna internet di Indonesia yang mencapai lebih dari 200 juta orang membuka peluang besar bagi pelaku Usaha Mikro, Kecil, dan Menengah (UMKM) untuk memasarkan produk mereka secara online. Platform marketplace seperti Tokopedia dan Shopee telah membuktikan bahwa model bisnis ini sangat efektif dalam menjangkau konsumen luas.
+Berdasarkan latar belakang tersebut, kami mengembangkan ZeeStore, sebuah website marketplace yang dirancang untuk memfasilitasi jual beli produk UMKM secara online. Website ini dibangun menggunakan HTML5, CSS3 (Bootstrap 5), dan JavaScript vanilla dengan backend Supabase (PostgreSQL + Authentication). Website terdiri dari 7 halaman HTML yang saling terintegrasi dan telah dilakukan berbagai modifikasi kreatif pada warna, tampilan, layout, dan fungsionalitas.
+1.2 Rumusan Masalah
+Berdasarkan latar belakang di atas, rumusan masalah pada laporan ini adalah:
+1. Bagaimana membangun website profil usaha/bisnis UMKM berupa marketplace online yang fungsional?
+2. Bagaimana menerapkan modifikasi kreatif pada warna, tampilan, posisi teks, layout, dan animasi secara manual maupun dengan bantuan AI?
+3. Bagaimana mengintegrasikan website dengan backend database dan autentikasi pengguna?
+1.3 Manfaat dan Tujuan
+Tujuan:
+1. Memenuhi tugas mata kuliah Pemrograman Web I dengan membuat website profil usaha minimal 4 halaman HTML (tercapai 7 halaman).
+2. Mengimplementasikan konsep pemrograman web (HTML, CSS, JavaScript) secara praktis.
+3. Melakukan modifikasi kreatif secara manual pada warna, font, layout, dan animasi.
+4. Meng-hosting website secara online agar bisa diakses publik.
+Manfaat:
+1. Meningkatkan pemahaman mahasiswa tentang pengembangan website modern.
+2. Memberikan pengalaman praktis membangun aplikasi web full-stack.
+Bab II Pembahasan
+2.1 Deskripsi Website
+ZeeStore adalah sebuah website marketplace/toko online yang terinspirasi dari platform e-commerce besar seperti Tokopedia dan Shopee. Website ini merupakan profil usaha UMKM yang menyediakan berbagai produk dari kategori Elektronik, Fashion Pria, Fashion Wanita, Makanan & Minuman, Rumah Tangga, dan Olahraga.
+Website dibangun sepenuhnya menggunakan HTML5, CSS3 (Bootstrap 5.3), dan JavaScript vanilla tanpa framework frontend, dengan backend menggunakan Supabase yang menyediakan PostgreSQL database dan sistem Authentication. Website terdiri dari 7 halaman HTML yang saling terintegrasi, 1 file CSS custom (style.css) berisi 1.097 baris kode styling, dan 8 file JavaScript modular untuk logika aplikasi.
+2.2 Link Website Online
+Website telah di-hosting secara online dan dapat diakses melalui:
+- Link Website: https://Zeeinch.my.id/ZeeStore
+- Repository GitHub: https://github.com/Zeeinch/ZeeStore
+2.3 Daftar Halaman Website
+Website ZeeStore memiliki 7 halaman HTML (melebihi syarat minimal 4 halaman):
+1. index.html - Halaman Login & Register. Mendukung login via email/password dan Google OAuth.
+2. home.html - Halaman Utama / Beranda. Menampilkan hero banner promosi, scroll kategori, dan grid katalog.
+3. product.html - Halaman Detail Produk. Menampilkan harga, deskripsi, stok, jumlah terjual, rating.
+4. cart.html - Halaman Keranjang Belanja. Mengelola item di keranjang belanja, mengubah jumlah.
+5. checkout.html - Halaman Checkout. Proses pembayaran multi-step.
+6. sell.html - Halaman Jual Barang. Formulir untuk mempublikasikan produk baru.
+7. profile.html - Halaman Profil Saya. Mengelola akun pengguna dan menampilkan riwayat belanja.
+No
+Fitur / Halaman
+Deskripsi Singkat
+1
+Home / Katalog
+Katalog dinamis dengan filter kategori dan pencarian.
+2
+Detail Produk
+Detail spesifikasi, rating toko, dan add to cart.
+3
+Keranjang Belanja
+Perhitungan subtotal real-time dan manajemen item.
+4
+Checkout Multi-Step
+Pemilihan alamat dan integrasi 6 metode pembayaran.
+5
+Jual Barang
+Validasi form untuk unggah produk UMKM ke database.
+6
+Profil & Riwayat
+Sinkronisasi alamat akun ke checkout dan tabel transaksi.
+2.4 Teknologi yang Digunakan
+Berikut adalah teknologi yang digunakan dalam pengembangan website ZeeStore:
+1. HTML5 Semantik - Struktur halaman web menggunakan elemen semantik seperti <nav>, <main>, <section>, dan <footer>.
+2. CSS3 + Bootstrap 5.3.3 - Styling custom sebanyak 1.097 baris ditambah framework responsif Bootstrap untuk grid system dan komponen UI.
+3. Bootstrap Icons 1.11.3 - Library ikon SVG untuk antarmuka pengguna.
+4. Google Fonts - Font premium Outfit (untuk heading/judul) dan Plus Jakarta Sans (untuk body text).
+5. JavaScript Vanilla (ES6+) - Logika aplikasi menggunakan async/await, DOM API, dan modular tanpa framework.
+6. Supabase - Backend-as-a-Service yang menyediakan PostgreSQL database, Row Level Security (RLS), dan Authentication.
+No
+Teknologi
+Versi
+Fungsi Eksekusi
+1
+HTML5
+5
+Struktur konten & Markup
+2
+Bootstrap
+5.3.3
+Responsiveness (Mobile/Desktop)
+3
+CSS3 (Custom)
+3
+Animasi, glassmorphism, warna
+4
+JavaScript
+ES6+
+Fetch API, DOM manipulation, Auth
+5
+Supabase
+-
+RDBMS & IAM
+6
+Google Fonts
+-
+Asset Tipografi
+2.5 Desain Sistem (Design System)
+A. Palet Warna (Color Palette)
+Warna primer menggunakan nuansa merah muda vibrant (#FF3366) digabungkan dengan aksen sekunder gelap bernuansa Slate (#0F172A). Kami juga menggunakan gradasi (linear-gradient) 135 derajat untuk memberikan kesan modern.
+Nama Warna / Role
+Kode Hex/RGBA
+Penggunaan dalam UI
+Primary Rose
+#FF3366
+Tombol utama, highlight harga, badge aktif
+Primary Gradient
+(135deg, #FF3366, #FF9933)
+Hero banner, glow avatar, logo text
+Secondary Slate
+#0F172A
+Background navbar, footer, warna teks utama
+Glassmorphism BG
+rgba(15, 23, 42, 0.85)
+Latar navbar melayang dengan backdrop-filter
+Success Green
+#10B981
+Progress bar checkout, badge sukses
+B. Tipografi (Typography)
+Kami memilih kombinasi dua tipe font. 'Outfit' memberikan karakter tegas dan geometrik untuk semua bagian judul, sedangkan 'Plus Jakarta Sans' memastikan paragraf tetap mudah dibaca.
+Jenis Font
+Tingkat Ketebalan (Weight)
+Penerapan pada Elemen
+Outfit
+300 - 800 (Light to ExtraBold)
+Judul, Heading (H1-H6), Harga Produk
+Plus Jakarta Sans
+400 - 700 (Regular to Bold)
+Teks paragraf, deskripsi, placeholder input
+C. Efek Animasi (Micro-interactions)
+Untuk menghidupkan website, kami memberikan beberapa transisi halus menggunakan timing function standar Material Design (cubic-bezier(0.4, 0, 0.2, 1)).
+Nama Keyframe Animasi
+Deskripsi Visual
+Lokasi Penggunaan
+fadeInUp
+Elemen muncul dari bawah secara perlahan
+Card katalog produk saat diloading
+floatBubble
+Objek lingkaran mengambang perlahan (10s)
+Elemen latar belakang di halaman login
+popIn
+Membesar secara lentur (bouncy)
+Ikon ceklis sukses pada halaman checkout
+hoverTranslate
+Kartu terangkat (-8px) & bayangan meluas
+Kartu produk saat dilewati kursor mouse
+2.6 Arsitektur Database & Struktur File
+A. Struktur Database (Supabase PostgreSQL)
+Database menggunakan arsitektur relasional yang dilindungi oleh Row Level Security (RLS) di mana hanya user terdaftar yang bisa mengakses pesanan miliknya sendiri.
+Nama Tabel
+Kolom Database Penyusun
+Deskripsi Fungsionalitas
+profiles
+id, full_name, phone, address, city
+Terkoneksi ke Auth, simpan detail user
+products
+id, name, price, stock, rating, sold
+Master data seluruh katalog produk UMKM
+categories
+id, name, icon
+Kategori klasifikasi produk jualan
+orders
+id, user_id, total, status, address
+Menyimpan header histori transaksi (invoice)
+order_items
+order_id, product_id, quantity, price
+Detail pesanan item per satu nomor invoice
+B. Struktur File Kode
+Total sistem ZeeStore memiliki 1.097 baris CSS dan ribuan baris JavaScript yang dibagi per halaman secara modular.
+Jenis Bahasa
+Total File
+Keterangan File Utama
+HTML
+7 File
+index, home, product, cart, checkout, sell, profile
+CSS
+1 File
+style.css (Design system & layout rules)
+JavaScript
+8 File
+Logic pemisahan fungsi tiap modul (auth, cart, dll)
+PLpgSQL (SQL)
+1 File
+schema.sql (Trigger, Tables, RLS, Seed data)
+2.7 Modifikasi Fungsionalitas
+1. Perbaikan Bug Stok: Stok produk kini berkurang dan jumlah terjual (sold) bertambah setelah checkout. Menggunakan fungsi validasi database untuk mencegah stok negatif.
+2. Penanganan JWT Expired: Otomatis logout dan redirect ke login jika token sudah expired, tanpa menampilkan error teknis ke user.
+3. Sinkronisasi Alamat: Data alamat dari profil otomatis terisi di form checkout.
+4. Keamanan XSS: Fungsi escapeHTML() dan sanitizeURL() untuk mencegah injection script.
+2.8 Prompt AI yang Digunakan
+Sesuai ketentuan, berikut adalah prompt AI yang digunakan :
+Kamu adalah senior web designer & developer dengan portofolio 100+ website. Bangun website Marketplace UMKM (E-Commerce) yang benar-benar siap launch — bukan template generik.
+# BRIEF KLIEN:
+Nama bisnis : ZeeStore
+Industri : E-Commerce / UMKM
+Target audiens : Anak muda, mahasiswa, dan masyarakat umum
+Tone : Profesional, dinamis, friendly
+Primary color : #FF3366 (Rose) & #0F172A (Slate)
+Aesthetic : Modern glassmorphism / clean
+# STRUKTUR HALAMAN:
+Halaman Autentikasi (Login/Register dengan email & Google OAuth)
+Beranda Utama (Hero banner, kategori, dan grid katalog produk)
+Detail Produk (Harga, spesifikasi, review, stok real-time)
+Keranjang Belanja & Checkout multi-step (dengan pilihan metode pembayaran)
+Profil Pengguna & Riwayat Transaksi (terintegrasi database)
+Halaman Jual Barang (Formulir bagi UMKM untuk upload produk)
+# STANDAR KUALITAS:
+HTML Semantik terpisah dengan CSS custom murni (>1000 baris) dan Modular JS.
+Fully responsive (mobile first), micro-interactions, dan hover effects yang mulus.
+Typography hierarchy yang proper (menggunakan font Outfit & Plus Jakarta Sans).
+Color system konsisten dari primary color (Rose) dan warna sekunder.
+Integrasi Backend penuh (Supabase PostgreSQL & sistem Authentication).
+SEO-ready meta tags & aman dari kerentanan XSS (Cross-Site Scripting).
+# LARANGAN:
+Jangan pakai template library eksternal yang kaku/membatasi modifikasi manual.
+Jangan pakai placeholder lorem ipsum (gunakan contoh data produk asli).
+Jangan desain generik atau template-feel.
+Output: langsung kode HTML, CSS, JS, dan SQL lengkap yang saling terhubung, siap buka di browser dan siap dionline-kan.
+Bab III Penutup
+3.1 Kesimpulan
+Website ZeeStore telah berhasil dikembangkan sebagai platform marketplace UMKM modern dengan 7 halaman HTML yang saling terintegrasi. Website dilengkapi dengan fitur autentikasi, katalog produk, keranjang belanja, proses checkout, jual barang, dan profil pengguna.
+Modifikasi kreatif yang telah dilakukan meliputi perubahan tipografi (Outfit + Plus Jakarta Sans), sistem palet warna gradien dengan 28+ variabel CSS, penambahan efek glassmorphism, sistem shadow berlevel, micro-animations, serta penambahan halaman profil. Perbaikan logika seperti sinkronisasi otomatis antar form juga berjalan dengan baik.
+3.2 Saran
+Untuk pengembangan lebih lanjut, kami menyarankan penambahan fitur pencarian/filter lanjutan menggunakan query params URL, integrasi payment gateway (Midtrans/Xendit) untuk otomatisasi mutasi, fitur chat WebSocket antara pembeli dan penjual, dan sistem notifikasi pesanan real-time.
+Daftar Pustaka
+Bootstrap. (2024). Bootstrap 5 Documentation. https://getbootstrap.com/docs/5.3/
+Supabase. (2024). Supabase Documentation. https://supabase.com/docs
+Google Fonts. (2024). Outfit & Plus Jakarta Sans. https://fonts.google.com/
+GitHub. (2026). ZeeStore Repository. https://github.com/Zeeinch/ZeeStore
+Lampiran
+Link Website Online: https://Zeeinch.my.id/ZeeStore
+Repository GitHub: https://github.com/Zeeinch/ZeeStore
+Sebelum
+Sesudah
